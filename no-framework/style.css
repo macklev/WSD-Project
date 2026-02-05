@@ -1,45 +1,186 @@
+/* Root color variables */
+:root {
+    --primary-green: #2d5016;
+    --secondary-green: #558b2f;
+    --accent-green: #7cb342;
+    --light-green: #9ccc65;
+    --sky-blue: #87ceeb;
+    --dark-blue: #4a7c9e;
+    --earth-brown: #8b6f47;
+    --light-cream: #faf8f3;
+    --text-dark: #2c3e1f;
+}
+
 /* General styles */
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-    background-color: #f0d9c1;
-    color: #333;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Segoe UI', serif;
+    background: linear-gradient(135deg, #faf8f3 0%, #e8f5e9 100%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header and navigation */
 header {
-    background-color: #184f18;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
     color: white;
-    padding: 20px;
+    padding: 30px 20px;
     text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-bottom: 4px solid var(--accent-green);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 nav a {
     color: white;
-    margin: 0 15px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1.1em;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: var(--light-green);
+    transform: translateY(-2px);
+    border-bottom: 2px solid var(--light-green);
 }
 
 /* Main content */
 main {
-    padding: 20px;
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
 }
 
+section {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(45, 80, 22, 0.1);
+    border-left: 5px solid var(--accent-green);
+}
+
+section h2 {
+    color: var(--primary-green);
+    font-size: 2em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--light-green);
+    padding-bottom: 10px;
+}
+
+section h3 {
+    color: var(--secondary-green);
+    font-size: 1.5em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+section p {
+    color: var(--text-dark);
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+section ul {
+    list-style-position: inside;
+    margin-left: 20px;
+}
+
+section li {
+    margin-bottom: 12px;
+    padding-left: 10px;
+    color: var(--text-dark);
+}
+
+section li:before {
+    content: "🌿 ";
+    margin-right: 8px;
+}
+
+/* Button styles */
 button {
-    padding: 10px 20px;
-    background-color: #6ab873;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--accent-green) 0%, var(--secondary-green) 100%);
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(124, 179, 66, 0.4);
+    margin-top: 15px;
 }
 
 button:hover {
-    background-color: #1f6135;
+    background: linear-gradient(135deg, var(--light-green) 0%, var(--accent-green) 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(124, 179, 66, 0.6);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* Contact info styling */
+.contact-info {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border-left: 4px solid var(--accent-green);
+}
+
+.contact-info p {
+    margin: 12px 0;
+    font-size: 1.05em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    
+    nav {
+        gap: 15px;
+    }
+    
+    nav a {
+        font-size: 0.95em;
+        padding: 6px 12px;
+    }
+    
+    section {
+        padding: 25px;
+    }
+    
+    section h2 {
+        font-size: 1.6em;
+    }
 }
