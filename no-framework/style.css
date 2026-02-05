@@ -3,13 +3,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f0d9c1;
     color: #333;
 }
 
 /* Header and navigation */
 header {
-    background-color: #007ACC;
+    background-color: #184f18;
     color: white;
     padding: 20px;
     text-align: center;
@@ -33,7 +33,7 @@ main {
 
 button {
     padding: 10px 20px;
-    background-color: #007ACC;
+    background-color: #6ab873;
     color: white;
     border: none;
     cursor: pointer;
@@ -41,5 +41,5 @@ button {
 }
 
 button:hover {
-    background-color: #005f99;
+    background-color: #1f6135;
 }
