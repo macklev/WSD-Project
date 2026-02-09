@@ -1,0 +1,89 @@
+.menu-button {
+    background-color: rgb(44, 152, 67);
+    color: black;
+    padding: 5px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    background-color: rgb(76, 199, 76);
+}
+
+.dropdown {
+    position: relative;
+
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgb(76, 199, 76);
+    color: black;
+    min-width: 100%;
+  
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(86, 224, 86);
+}
+
+.dropdown-content a {
+    display: block;
+    color: rgb(60, 9, 84);
+    padding: 4px 14px;
+    text-decoration: none;
+}
+
+.edit-button {
+    background-color: rgb(44, 152, 67);
+    color: black;
+    padding: 5px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+.edit-button:focus-within .dropdown-content {
+    display: block;   
+}
+
+.navbar {
+    display: flex;
+    background-color: rgb(44, 152, 67);
+    width: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(214, 244, 223);
+    color: black;
+    margin: 0;
+}
+
+#instructions {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-style: solid;
+    border-width: 0px 0px 0px 5px;
+    border-color: white white white rgb(75, 203, 75);
+    padding: 10px 20px;
+    margin: 25px 130px;
+}
+
+#extra-credit {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-style: solid;
+    border-width: 0px 0px 0px 5px;
+    border-color: white white white rgb(252, 244, 27);
+    padding: 10px 20px;
+    margin: 25px 130px;
+}
+
+
