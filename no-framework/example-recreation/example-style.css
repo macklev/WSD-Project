@@ -13,8 +13,8 @@
 
 .dropdown {
     position: relative;
-
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -23,7 +23,6 @@
     background-color: rgb(76, 199, 76);
     color: black;
     min-width: 100%;
-  
 }
 
 .dropdown:hover .dropdown-content {
