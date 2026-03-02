@@ -1,0 +1,2 @@
+#node modules should not be tracked by git
+/node_modules
