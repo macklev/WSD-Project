@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useProductsStore } from '@/stores/products';
 
-
 const products = useProductsStore()
 
 </script>
@@ -11,10 +10,14 @@ const products = useProductsStore()
   <div class="grid is-col-min-10">
     <div v-for="product in products.products" :key="product.id" class="box">
       <img :src="product.thumbnail" alt="Product Image" class="product-image" />
-      <button class="button is-primary is-small add-button">Add to Cart</button>
-      <b>{{ product.title }}</b>
+
+      <h4 class="title is-6">{{ product.title }}</h4>
+      <h6 class="subtitle is-7">{{product.category}} / {{ product.brand }}</h6>
       {{ product.description }}
-      <div class="price">${{ product.price }}</div>
+      <button class="button is-primary is-small add-button">Add to Cart</button>
+      <div>
+        <span class="price">${{ product.price }}</span>
+      </div>
     </div>
   </div>
 </template>

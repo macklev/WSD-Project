@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import type { Product } from '../types'
 import { ref } from 'vue'
 import data from '../data/products.json'
 

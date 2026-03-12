@@ -1,7 +1,22 @@
+export type ProductReview = {
+  rating: number
+  comment: string
+  date: string
+  reviewerName: string
+  reviewerEmail: string
+}
+
 export type Product = {
   id: number
-  name: string
+  title: string
   description: string
+  category: string
   price: number
-  imageUrl: string
+  rating: number
+  tags: string[]
+  brand?: string
+  reviews: ProductReview[]
+  images: string[]
+  thumbnail: string
 }
+
