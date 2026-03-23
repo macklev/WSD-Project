@@ -1,31 +1,37 @@
-import {Router} from "express"
+import { Router } from "express"
+import { getAll, get, create, update, remove } from "../models/users"
 
-const app= Router()
+const app = Router()
 
-app.get("/users", (_req,res) => {
-  res.send([
-    { id: 1, name: "John Doe", email: "john.doe@example.com" },
-    { id: 2, name: "Jane Smith", email: "jane.smith@example.com" }
-  ])
+app.get("/", (_req, res) => {
+    const users = getAll().map((x) => ({
+        ...x,
+        password: undefined,
+    }))
+    res.send(users)
 })
+    .get("/count", (_req, res) => {
+        const count = getAll().length
+        res.send({ count })
+    })
+    .get("/:id", (req, res) => {
+        const { id } = req.params
+        const user = get(parseInt(id))
+        res.send(user)
+    })
+    .post("/", (req, res) => {
+        const newUser = create(req.body)
+        res.send(newUser)
+    })
+    .patch("/:id", (req, res) => {
+        const { id } = req.params
+        const updatedUser = update(parseInt(id), req.body)
+        res.send(updatedUser)
+    })
+    .delete("/:id", (req, res) => {
+        const { id } = req.params
+        const removedUser = remove(parseInt(id))
+        res.send(removedUser)
+    })
 
-.get("/", (_req,res) => {
-    const { id } = _req.query
-    res.send({ id, name: "John Doe", email: "john.doe@example.com" })
-})
-
-.post("/", (_req,res) => {
-    const { name, email } = _req.body
-    res.send({ id: 3, name, email })
-})
-
-.patch("/:id", (_req,res) => {
-    const { id } = _req.params
-    const { name, email } = _req.body
-    res.send({ id, name, email })
-})
-
-.delete("/:id", (_req,res) => {
-    const { id } = _req.params
-    res.send({ message: `User with id ${id} deleted` })
-})
+export default app
