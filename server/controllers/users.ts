@@ -1,5 +1,6 @@
 import { Router } from "express"
 import { getAll, get, create, update, remove } from "../models/users"
+import {User, DataEnvelope, DataListEnvelope } from "../types"
 
 const app = Router()
 
@@ -8,7 +9,12 @@ app.get("/", (_req, res) => {
         ...x,
         password: undefined,
     }))
-    res.send(users)
+    const response: DataListEnvelope<User> = {
+        data: users,
+        isSuccess: true,
+        total: users.length,
+    }
+    res.send(response)
 })
     .get("/count", (_req, res) => {
         const count = getAll().length
