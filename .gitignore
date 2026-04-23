@@ -1,2 +1,7 @@
 #node modules should not be tracked by git
 /node_modules
+
+#build files should not be tracked by git
+/dist
+#env files should not be tracked by git
+.env
