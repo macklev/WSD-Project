@@ -1,9 +1,14 @@
 import { defineStore } from 'pinia'
+import type {Product} from '../../../server/types'
 import { ref } from 'vue'
-import data from '../data/products.json'
+import { getProducts } from '@/services/products'
 
 export const useProductsStore = defineStore('products', () => {
-  const products = ref(data.products)
+  getProducts().then((data) => {
+    products.value = data.data
+  })
 
-  return {products}
+  const products = ref<Product[]>([])
+
+  return { products }
 })

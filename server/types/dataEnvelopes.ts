@@ -1,10 +1,17 @@
-
 export type DataEnvelope<T> = {
-    data: T;
-    isSuccess: boolean;
-    message?: string;
+    data: T
+    isSuccess: boolean
+    message?: string
 }
 
 export type DataListEnvelope<T> = DataEnvelope<T[]> & {
-    total: number;
+    total: number
+}
+
+export type PagingRequest = {
+    page?: number
+    pageSize?: number
+    search?: string
+    sortBy?: string
+    descending?: boolean
 }
