@@ -1,17 +1,14 @@
 import { Router } from "express"
-import { getAll, get, create, update, remove, seed } from "../models/users"
-import { User, DataEnvelope, DataListEnvelope } from "../types"
+import { getAll, get, create, update, remove, seed } from "../models/products"
+import { Product, DataEnvelope, DataListEnvelope } from "../types"
 
 const app = Router()
 
 app.get("/", async (req, res) => {
     const { list, count } = await getAll(req.query)
-    const sanitizedUsers = list.map((x) => ({
-        ...x,
-        password: undefined,
-    }))
-    const response: DataListEnvelope<User> = {
-        data: sanitizedUsers,
+
+    const response: DataListEnvelope<Product> = {
+        data: list,
         isSuccess: true,
         total: count,
     }
@@ -27,7 +24,7 @@ app.get("/", async (req, res) => {
     })
     .get("/:id", async (req, res) => {
         const { id } = req.params
-        const response: DataEnvelope<User> = {
+        const response: DataEnvelope<Product> = {
             data: await get(Number(id)),
             isSuccess: true,
         }
@@ -35,39 +32,39 @@ app.get("/", async (req, res) => {
     })
 
     .post("/", async (req, res) => {
-        const newUser = await create(req.body)
-        const response: DataEnvelope<User> = {
-            data: newUser,
+        const newItem = await create(req.body)
+        const response: DataEnvelope<Product> = {
+            data: newItem,
             isSuccess: true,
         }
         res.send(response)
     })
     .patch("/:id", async (req, res) => {
         const { id } = req.params
-        const updatedUser = await update(Number(id), req.body)
-        const response: DataEnvelope<User> = {
-            data: updatedUser as User,
+        const updatedItem = await update(Number(id), req.body)
+        const response: DataEnvelope<Product> = {
+            data: updatedItem,
             isSuccess: true,
         }
         res.send(response)
     })
     .delete("/:id", async (req, res) => {
         const { id } = req.params
-        const removedUser = await remove(Number(id))
-        const response: DataEnvelope<User> = {
-            data: removedUser,
+        const removedItem = await remove(Number(id))
+        const response: DataEnvelope<Product> = {
+            data: removedItem,
             isSuccess: true,
-            message: `User ${removedUser.firstName} ${removedUser.lastName} has been removed.`,
+            message: `Product ${removedItem.title} has been removed.`,
         }
         res.send(response)
     })
     .post("/seed", async (_req, res) => {
-        const count = await seed()
-        const response: DataEnvelope<number | null> = {
-            data: count,
+        await seed()
+        const response: DataEnvelope<null> = {
+            data: null,
             isSuccess: true,
+            message: "Products have been seeded.",
         }
         res.send(response)
     })
-
 export default app

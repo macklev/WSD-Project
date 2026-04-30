@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    <script>
+        const API_KEY = "YOUR_API_KEY";
+        var map;
+      function initMap() {
+        const location = { lat: -34.397, lng: 150.644 };
+        map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 8,
+          center: location,
+        });
+        const marker = new google.maps.Marker({
+          position: location,
+          map: map,
+        });
+      }
+
+      async function getAdvice() {
+        const response = await fetch("https://generativelanguage.googleapis.com/v1beta2/models/gemini-2.0--:generateContent?key=" + API_KEY, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+          },
+          body: JSON.stringify({
+            "model": "models/text-bison-001",
+            "prompt": {
+              "text": "Give me some advice on how to stay productive while working from home."
+            },
+            "maxOutputTokens": 100,
+          }),
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+
+</body>
+</html>

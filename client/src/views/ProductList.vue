@@ -6,6 +6,7 @@ import { useCartStore } from '@/stores/cart';
 
 
 const products = useProductsStore()
+products.loadProducts()
 const cart = useCartStore()
 
 function addToCart(productId: number) {
@@ -31,20 +32,25 @@ function addToCart(productId: number) {
             </div>
         </div>
     </div>
-    <SideBar :width="300" class="sidebar">
+    <SideBar :width="300" :is-active="cart.isCartSidebarOpen" class="sidebar">
         <ShoppingCart />
     </SideBar>
 </template>
 
 <style scoped>
+.sidebar {
+    background-color: #fff;
+}
+
+.subtitle {
+    margin-bottom: .5em;
+    font-style: italic;
+}
+
 .add-button {
     float: right;
     margin-top: .5em;
     ;
-}
-
-.sidebar {
-  background-color: white;
 }
 
 .price {
